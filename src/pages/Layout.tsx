@@ -1,10 +1,18 @@
 import { Outlet,useLocation } from "react-router"
+import Header from "../components/Header"
+import Sidebar from "../components/Sidebar"
 
 export default function Layout() {
-    const location = useLocation()
+  const location = useLocation()
   return (
-    <div className="bg-[#F7F7F5] w-full ">
-        <div><Outlet/></div>
+    <div className="flex h-screen w-full bg-[#e6e3fb] overflow-hidden">
+      <Sidebar />
+      <div className="flex flex-col flex-1 h-screen overflow-hidden">
+        <Header />
+        <div className="flex-1 overflow-y-auto p-8">
+          <Outlet />
+        </div>
+      </div>
     </div>
   )
 }
