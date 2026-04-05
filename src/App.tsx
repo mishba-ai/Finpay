@@ -1,5 +1,4 @@
 import { useState } from "react"
-import favicon from "../public/favicon.png"
 
 function App() {
   const [showrole, setShowRole] = useState(false)
@@ -16,7 +15,7 @@ function App() {
       <div className="bg-[#e1dbec bg-linear-to-tr font-serif from-[#edf3d0] via-[#ffffff] to-[#a8c7e3] flex w-full h-screen">
 
         <div className="w-[60%]   font-semibold text-lg ">
-          <img src={favicon} alt="" className="w-72 " />
+          <img src="../favicon.png" alt="" className="w-72 " />
           <div className="flex justify-center items-center">
             <p className="text-neutral-500">Smart, secure, and seamless financial management at your fingertips</p>
           </div>
