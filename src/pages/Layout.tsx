@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar"
 export default function Layout() {
   const location = useLocation()
   return (
-    <div className="flex h-screen w-full bg-[#e6e3fb] overflow-hidden">
+    <div className="flex h-screen w-full bg-[#f0eef9] overflow-hidden">
       <Sidebar />
       <div className="flex flex-col flex-1 h-screen overflow-hidden">
         <Header />

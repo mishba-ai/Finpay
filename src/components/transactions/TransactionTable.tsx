@@ -25,16 +25,15 @@ export default function TransactionTable() {
 
   return (
     <div>
-      <table>
-        <thead>
-          <tr className="">
+      <table className="w-full">
+        <thead className="w-full">
+          <tr className="flex justify-between bg-red-200 w-full">
             <Theader label="Date" colkey="date" sort={sort} onSort={handleSort} />
             <Theader label="Amount" colkey="amount" sort={sort} onSort={handleSort} />
             <th>Payment Name</th>
             <th>Method</th>
             <th>Category</th>
             <Theader label="Status" colkey="status" sort={sort} onSort={handleSort} />
-
           </tr>
         </thead>
         <tbody>
@@ -46,12 +45,12 @@ export default function TransactionTable() {
             rows.map((txn,i)=>(
               <Trow 
               key={txn.id}
-              txn={{...txn, amount: String(txn.amount)}}
+              txn={txn}
               role={role}
               isLast={i===rows.length-1}
               onEdit={() => setModal(txn)}
               onDelete={handleDelete}
-               ></Trow>
+               />
             ))
           )}
         </tbody>

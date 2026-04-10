@@ -1,19 +1,11 @@
 import { useState, useEffect, useRef } from "react"
 import { EyeIcon, EditIcon, EllipsisIcon, Trash2Icon } from "lucide-react";
+import type { Transaction,Role } from "../../types";
 
-type Transaction = {
-    type: string;
-    icon: string;
-    desc: string;
-    amount: string;
-    method: string;
-    category: string;
-    id: string;
-};
 
 interface ActionMenuProps {
     txn: Transaction;
-    role: "admin" | "viewer";
+    role: Role;
     onEdit: (txn: Transaction) => void;
     onDelete: (id: string) => void;
 }

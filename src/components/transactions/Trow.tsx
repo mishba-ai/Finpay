@@ -1,23 +1,26 @@
-import { fmt,fmtDate } from "../../utils/helpers"
+import { fmt, fmtDate } from "../../utils/helpers"
+import Actionmenu from "./Actionmenu"
 import Statuspill from "./Statuspill"
+import type { Role, Transaction } from "../../types"
+
 
 interface row {
-    txn: { type: string, icon?: string, desc: string,amount:string, method: string, category: string }
-    role: string
+    txn: Transaction
+    role: Role
     isLast: boolean
-    onEdit: () => void
+    onEdit: (txn: Transaction) => void
     onDelete: (id: string) => void
 }
 export default function Trow({ txn, role, isLast, onEdit, onDelete }: row) {
     return (
-        <tr className='' onMouseEnter={e => e.currentTarget.style.background = '#fafafa'}
+        <tr className={`border-b-${isLast ? "none" : "border"}`} onMouseEnter={e => e.currentTarget.style.background = '#fafafa'}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
             {/* date */}
-            <td className=''>{ }</td>
+            <td className=''>{fmtDate(new Date(txn.date))}</td>
             {/* amount */}
             <td className=''>
                 <span>{txn.type === "income" ?
-                    "+" : "-"}{fmt(txn.amount) }</span>
+                    "+" : "-"}{fmt(txn.amount)}</span>
             </td>
             {/* payment name */}
             <td className=''>
@@ -32,10 +35,18 @@ export default function Trow({ txn, role, isLast, onEdit, onDelete }: row) {
             <td>{txn.category}</td>
 
             {/* status */}
-            <td></td>
-            {/* action menu */}
             <td>
-
+                <Statuspill
+                    status={txn.status} />
+            </td>
+            {/* action menu */}
+            <td >
+                <Actionmenu
+                    txn={txn}
+                    role={role}
+                    onEdit={onEdit}
+                    onDelete={onDelete}
+                />
             </td>
         </tr>
     )

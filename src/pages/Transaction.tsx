@@ -1,4 +1,5 @@
 import { Tally1Icon, SearchIcon, SlidersHorizontalIcon, FileUpIcon, PlusIcon } from "lucide-react"
+import TransactionTable from "../components/transactions/TransactionTable"
 
 export default function Transaction() {
   return (
@@ -14,7 +15,7 @@ export default function Transaction() {
           <div className="flex items-center"><SearchIcon className="stroke-[#2a671c]" /></div>
         </div>
       </header>
-
+ 
       {/* features  */}
       <div className="flex justify-between items-center w-full mt-2">
         <div className="flex gap-x-5">
@@ -32,9 +33,8 @@ export default function Transaction() {
         </div>
       </div>
 
-
       {/* table */}
-
+      <TransactionTable/>
 
     </div>
   )
